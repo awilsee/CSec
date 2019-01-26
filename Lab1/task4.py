@@ -1,7 +1,7 @@
-import binascii
 import os
 
 import task3
+
 
 def xorImages(pic1FilePath, pic2FilePath):
     file1 = open(pic1FilePath, "rb").read()
@@ -11,9 +11,8 @@ def xorImages(pic1FilePath, pic2FilePath):
     txtEnc = task3.xorfunc(file1, file2)
     # print("\nencryptedHEX: ", '[{}]'.format(' ' .join(hex(x) for x in txtEnc)))
 
-    byteEnc = task3.fileHeader
-    byteEnc += txtEnc[54:]
-    open("./xorPics.bmp", "wb").write(byteEnc)
+    task3.write_bmp_file("./xorPics.bmp", txtEnc)
+
 
 if __name__ == '__main__':
     cipher = os.urandom(task3.fileLength)

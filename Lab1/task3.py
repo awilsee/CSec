@@ -11,7 +11,12 @@ pic3Enc = "./random-enc.bmp"
 picDec = "./pic-dec.bmp"
 
 fileLength = len(open(pic1, "rb").read())
-fileHeader = open(pic1, "rb").read(54)
+
+
+def write_bmp_file(filename, input):
+    byteEnc = open("./cp-logo.bmp", "rb").read(54)
+    byteEnc += input[54:]
+    open(filename, "wb").write(byteEnc)
 
 
 def encryptBMPFile(picFilePath, picEncFilePath, cipher=os.urandom(fileLength)):
@@ -21,9 +26,7 @@ def encryptBMPFile(picFilePath, picEncFilePath, cipher=os.urandom(fileLength)):
     txtEnc = xorfunc(cipher, file)
     # print("\nencryptedHEX: ", '[{}]'.format(' ' .join(hex(x) for x in txtEnc)))
 
-    byteEnc = fileHeader
-    byteEnc += txtEnc[54:]
-    open(picEncFilePath, "wb").write(byteEnc)
+    write_bmp_file(picEncFilePath, txtEnc)
 
     txtDec = xorfunc(cipher, txtEnc)
 
@@ -31,9 +34,7 @@ def encryptBMPFile(picFilePath, picEncFilePath, cipher=os.urandom(fileLength)):
 
 
 def generateRndBMPFile(picEncFilePath, cipher=os.urandom(fileLength)):
-    byteEnc = fileHeader
-    byteEnc += cipher[54:]
-    open(picEncFilePath, "wb").write(byteEnc)
+    write_bmp_file(picEncFilePath, cipher)
 
 
 if __name__ == '__main__':
