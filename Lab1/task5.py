@@ -46,6 +46,15 @@ def encrypt_ecb_file(file_path):
     return encrypt_ecb(get_padded_file(file_path))
 
 
+def decrypt_ecb(data):
+    x = 0
+    file_enc = bytes()
+    while x < len(data) / aes_bytes:
+        file_enc += aes_prim.decrypt(data[x * aes_bytes:((x + 1) * aes_bytes)])
+        x += 1
+    return file_enc
+
+
 def encrypt_cbc(data, init_iv):
     x = 0
     file_enc = bytes()
@@ -63,6 +72,18 @@ def encrypt_cbc_file(file_path, init_iv):
     return encrypt_cbc(get_padded_file(file_path), init_iv)
 
 
+def decrypt_cbc(data, init_iv):
+    x = 0
+    dec_data = bytes()
+    while x < len(data) / aes_bytes:
+        dec_bytes = aes_prim.decrypt(data[x * aes_bytes:((x + 1) * aes_bytes)])
+        if 0 == x:
+            dec_data += xorfunc(init_iv, dec_bytes)
+        else:
+            dec_data += xorfunc(dec_bytes, data[(x - 1) * aes_bytes:(x * aes_bytes)])
+        x += 1
+    return dec_data
+
 
 if __name__ == '__main__':
     enc_txt = encrypt_ecb_file(txtfilePath)
@@ -72,6 +93,9 @@ if __name__ == '__main__':
     cipher = AES.new(cipher_key, AES.MODE_ECB)
     plaintext = cipher.decrypt(enc_txt)
     print(plaintext)
+
+    #test own decrypt implementation
+    print(decrypt_ecb(enc_txt))
 
     enc_bytes = encrypt_ecb_file(pic1)
     write_bmp_file(pic1 + ending_ecb, enc_bytes)
@@ -87,6 +111,9 @@ if __name__ == '__main__':
     cipher = AES.new(cipher_key, AES.MODE_CBC, init_iv)
     plaintext = cipher.decrypt(enc_txt)
     print(plaintext)
+
+    #test own decrypt implementation
+    print(decrypt_cbc(enc_txt, init_iv))
 
     enc_bytes = encrypt_cbc_file(pic1, init_iv)
     write_bmp_file(pic1 + ending_cbc, enc_bytes)
