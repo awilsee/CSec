@@ -44,7 +44,7 @@ def collision_res():
     for i in range(num_of_loops):
         print("test {}".format(i))
         bits = 8
-        while 32 >= bits:
+        while 50 >= bits:
             bits_list[i].append(bits)
             start_time = time.process_time()
             while True:
