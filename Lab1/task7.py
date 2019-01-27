@@ -44,7 +44,7 @@ def collision_res():
     for i in range(num_of_loops):
         print("test {}".format(i))
         bits = 8
-        while 50 >= bits:
+        while 32 >= bits:
             bits_list[i].append(bits)
             start_time = time.process_time()
             while True:
@@ -58,8 +58,8 @@ def collision_res():
                     if value != dict_hashs[key]:
                         elapsed_time = (time.process_time() - start_time)
                         time_list[i].append(elapsed_time)
-                        dict_list[i].append(len(dict_hashs))
-                        print("Found duplicate with {} bits, needed {:.0f} s #inputs {}\nhash1: 0x{:020X}\nInput1: 0x{:040X}\nInput2: 0x{:040X}\n" .format(bits, elapsed_time, len(dict_hashs), key, int.from_bytes(dict_hashs[key], 'big'), int.from_bytes(value, 'big')))
+                        dict_list[i].append(len(dict_hashs) / 1000)
+                        print("Found duplicate with {} bits, needed {:.0f} s #inputs {}k\nhash1: 0x{:020X}\nInput1: 0x{:040X}\nInput2: 0x{:040X}\n" .format(bits, elapsed_time, len(dict_hashs), key, int.from_bytes(dict_hashs[key], 'big'), int.from_bytes(value, 'big')))
                         break
                 else:
                     dict_hashs[key] = value
@@ -90,7 +90,7 @@ def collision_res():
     fig = plt.figure()
     plt.plot(bits_mean_list, dict_mean_list)
     plt.xlabel('digest size [bits]')
-    plt.ylabel('# of inputs')
+    plt.ylabel('# of inputs [k]')
     fig.savefig('plot_num_input.png', dpi=500, bbox_inches='tight')
 
     fig = plt.figure()
