@@ -52,7 +52,8 @@ def decrypt_ecb(data):
     while x < len(data) / aes_bytes:
         file_enc += aes_prim.decrypt(data[x * aes_bytes:((x + 1) * aes_bytes)])
         x += 1
-    return file_enc
+    pad_byte = file_enc[len(file_enc) - 1]
+    return file_enc[:len(file_enc) - pad_byte]
 
 
 def encrypt_cbc(data, init_iv):
@@ -82,7 +83,8 @@ def decrypt_cbc(data, init_iv):
         else:
             dec_data += xorfunc(dec_bytes, data[(x - 1) * aes_bytes:(x * aes_bytes)])
         x += 1
-    return dec_data
+    pad_byte = dec_data[len(dec_data) - 1]
+    return dec_data[:len(dec_data) - pad_byte]
 
 
 if __name__ == '__main__':
