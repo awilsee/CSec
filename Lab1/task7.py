@@ -33,7 +33,7 @@ def preimage_res(target):
 
 
 def collision_res():
-    num_of_loops = 3
+    num_of_loops = 5
 
     bits_list = [list() for x in range(num_of_loops)]
     dict_list = [list() for x in range(num_of_loops)]
@@ -59,7 +59,7 @@ def collision_res():
                         elapsed_time = (time.process_time() - start_time)
                         time_list[i].append(elapsed_time)
                         dict_list[i].append(len(dict_hashs) / 1000)
-                        print("Found duplicate with {} bits, needed {:.0f} s #inputs {}k\nhash1: 0x{:020X}\nInput1: 0x{:040X}\nInput2: 0x{:040X}\n" .format(bits, elapsed_time, len(dict_hashs), key, int.from_bytes(dict_hashs[key], 'big'), int.from_bytes(value, 'big')))
+                        print("Found duplicate with {} bits, needed {:.0f} s #inputs {}k\nhash1: 0x{:020X}\nInput1: 0x{:040X}\nInput2: 0x{:040X}\n" .format(bits, elapsed_time, len(dict_hashs) / 1000, key, int.from_bytes(dict_hashs[key], 'big'), int.from_bytes(value, 'big')))
                         break
                 else:
                     dict_hashs[key] = value
@@ -88,16 +88,22 @@ def collision_res():
 
     #plotting graphs
     fig = plt.figure()
-    plt.plot(bits_mean_list, dict_mean_list)
+    for j in range(num_of_loops):
+        plt.plot(bits_list[j], dict_list[j], ':')
+    plt.plot(bits_mean_list, dict_mean_list, color='red')
     plt.xlabel('digest size [bits]')
     plt.ylabel('# of inputs [k]')
     fig.savefig('plot_num_input.png', dpi=500, bbox_inches='tight')
+    fig.savefig('plot_num_input.svg', format='svg', dpi=500, bbox_inches='tight')
 
-    fig = plt.figure()
-    plt.plot(bits_mean_list, time_mean_list)
+    fig1 = plt.figure()
+    for j in range(num_of_loops):
+        plt.plot(bits_list[j], time_list[j], ':')
+    plt.plot(bits_mean_list, time_mean_list, color='red')
     plt.xlabel('digest size [bits]')
     plt.ylabel('collision time [s]')
-    fig.savefig('plot_time.png', dpi=500, bbox_inches='tight')
+    fig1.savefig('plot_time.png', dpi=500, bbox_inches='tight')
+    fig1.savefig('plot_time.svg', format='svg', dpi=500, bbox_inches='tight')
 
 
 if __name__ == '__main__':
