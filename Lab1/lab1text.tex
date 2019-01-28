@@ -1,0 +1,15 @@
+\section{Warm It Up}
+\lstinputlisting[caption=Code of task 1, label=lst:task1, firstline=7]{task1.py}
+
+Firstly implemted the task using pycrypto lib. However this lib has a limit of 32 Byte for the key, so it's not usable for longer strings. Therefore implemented the xorfunc by scratch. This functions will be used from the other tasks, as well. Realized the xorfunc with bytewise XOR with a for loop.\\
+
+
+\section{Implement OTP}
+\lstinputlisting[caption=Code of task 2, label=lst:task2, firstline=9]{task2.py}
+
+For the One Time Pad (OTP) implemented reading and writing files in general. Additionally used the \textit{os.urandom}-function to generate the cipher key with the same length as the file. For encrypting and decrypting the key with the file the xorfunc of \lstref{task1} is used.\\
+
+\section{Encrypt an Image Using OTP}
+\lstinputlisting[caption=Code of task 3, label=lst:task3, firstline=16]{task3.py}
+
+
