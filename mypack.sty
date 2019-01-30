@@ -8,7 +8,7 @@
 \RequirePackage{pdfpages}%			zum anhang uä einbinden
 \RequirePackage{amsmath,amstext}%
 \RequirePackage{wrapfig}%
-\RequirePackage{graphicx}%			grafiken einbinden, jpeg oder ps, eps
+\RequirePackage{graphicx}%			grafiken einbinden, jpeg oder ps, epss
 \RequirePackage{geometry}%			für seitenränder und fusszeilenabstand
 \RequirePackage{fancyhdr}%
 \RequirePackage[colorlinks=false, pdfborder={0 0 0}, bookmarksopen=true]{hyperref}%			klickbares inhaltsverzeichniss und links, muss als letztes geladen werden!
@@ -98,7 +98,8 @@
 %
 %
 \newcommand{\lstref}[1]{listing \ref{lst:#1}}
-\renewcommand{\thesection}{Part \arabic{section} -}
+%\renewcommand{\thesection}{Part \arabic{section} -}
+%\renewcommand{\subsection}{\arabic{subsection} - }
 %caption left alignment
 %\captionsetup{justification   = raggedright, singlelinecheck = false}
 \providecommand{\Fach}[1]{\newcommand{\TFach}{#1}}%					Speichern des Faches (z.B.: Physik IV - Praktikum)
