@@ -1,8 +1,6 @@
 import binascii
 from itertools import cycle
 
-from Crypto.Cipher import XOR
-
 
 def xorfunc(txtCipher, txt):
     if len(txtCipher) != len(txt):
