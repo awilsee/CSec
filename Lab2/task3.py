@@ -1,6 +1,12 @@
 # http://inventwithpython.com/hacking (BSD Licensed)
+import hashlib
+import os
 
 import PrimesRabinMiller as prm
+from Crypto.Cipher import AES
+
+from task2 import add_pkcs7
+from task2 import remove_pkcs7
 
 e = 65537
 KEY_SIZE = 1024 # 128 bytes
@@ -99,7 +105,7 @@ def decrypt_msg(block_msg, priv_key, msgLen):
 
 if __name__ == '__main__':
 
-    public_k, private_k = gen_prime_key(KEY_SIZE)
+    public_k, private_k = gen_prime_key(KEY_SIZE) #n,e n,d
 
     msg1 = "Hello World!"
     msg2 = "This is a string which includes more than 128 Bytes. It is used to test if the block building also works if you have more than block_size Bytes."
@@ -107,5 +113,26 @@ if __name__ == '__main__':
     enc_msg = encrypt_msg(msg2, public_k)
 
     dec_msg = decrypt_msg(enc_msg, private_k, len(msg2))
-
     print(dec_msg)
+
+    print("\nPartB")
+    privS = 21
+    shared_c = pow(privS, public_k[1], public_k[0])
+
+    #mallory modifies c
+    shared_c = public_k[0]
+
+    s_a = pow(shared_c, private_k[1], private_k[0])
+    s_m = 0
+    hash_a = hashlib.sha256("{}".format(int(s_a)).encode()).digest()
+    hash_m = hashlib.sha256("0".encode()).digest()
+
+    #encrypting, sending and decrypting with key of mallory
+    init_iv = os.urandom(16)
+    cipher = AES.new(hash_a[:16], AES.MODE_CBC, init_iv)
+    crypt = cipher.encrypt(add_pkcs7(bytes(msg2, 'utf-8')))
+
+    cipher = AES.new(hash_m[:16], AES.MODE_CBC, init_iv)
+    dec = cipher.decrypt(crypt)
+
+    print(remove_pkcs7(dec).decode('utf-8'))
