@@ -1,0 +1,84 @@
+aw@kali-aw:~/CSC321/Lab3$ openssl req -new -x509 -keyout ca.key -out ca.crt -config openssl.cnf
+Generating a RSA private key
+..........+++++
+......................+++++
+writing new private key to 'ca.key'
+Enter PEM pass phrase: calpolyaWil
+Verifying - Enter PEM pass phrase:
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:CA
+Locality Name (eg, city) []:SLO
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:AndySec
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:AndySec
+Email Address []:info@andysec.com
+aw@kali-aw:~/CSC321/Lab3$ openssl x509 -in ca.crt -text
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            4f:1c:dd:3f:84:66:d1:92:a9:16:4c:09:62:10:e5:99:f4:2b:2e:04
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C = US, ST = CA, L = SLO, O = AndySec, CN = AndySec, emailAddress = info@andysec.com
+        Validity
+            Not Before: Feb 11 01:03:20 2019 GMT
+            Not After : Mar 13 01:03:20 2019 GMT
+        Subject: C = US, ST = CA, L = SLO, O = AndySec, CN = AndySec, emailAddress = info@andysec.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                RSA Public-Key: (1024 bit)
+                Modulus:
+                    00:9c:c0:73:31:4b:e7:0d:57:50:f6:1c:fd:97:3b:
+                    71:4a:a1:eb:d2:b2:0f:43:22:29:a9:76:7d:b2:b4:
+                    1f:d6:6e:02:a7:2b:70:61:b1:6c:4b:7e:e6:20:53:
+                    88:43:0d:53:38:03:17:07:f2:6f:d9:3b:0b:4f:52:
+                    9e:c0:e8:2f:50:b7:1f:24:d4:41:f1:00:ec:91:ed:
+                    6e:87:5e:26:5f:34:4c:95:50:6f:56:25:be:f3:88:
+                    e9:b2:81:cd:55:58:a5:a8:52:56:f3:25:4d:1e:76:
+                    48:0b:e3:c2:44:24:f1:91:9e:91:4c:04:99:40:ec:
+                    15:74:25:d2:ca:e7:f9:1d:3b
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Key Identifier: 
+                05:E7:CC:B8:63:F2:72:6E:F6:7C:02:2E:EA:4B:DC:1D:54:AC:08:C4
+            X509v3 Authority Key Identifier: 
+                keyid:05:E7:CC:B8:63:F2:72:6E:F6:7C:02:2E:EA:4B:DC:1D:54:AC:08:C4
+
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+    Signature Algorithm: sha256WithRSAEncryption
+         71:0a:c6:f5:96:5a:bf:64:23:23:88:94:43:2e:f9:82:3f:88:
+         e1:f1:51:4d:22:7d:55:1b:d9:10:77:27:fd:30:fe:84:a1:30:
+         41:e7:05:48:8e:5f:d8:47:e0:bb:84:52:84:27:0b:91:42:c3:
+         db:09:ca:ee:d1:4d:bf:0b:24:15:fc:2a:ca:38:32:b8:a2:89:
+         2f:72:27:af:98:75:1c:46:4e:16:dc:66:ea:c3:fc:6d:91:1a:
+         c6:da:5e:86:3c:dd:65:47:ab:41:9e:15:85:91:70:54:49:a2:
+         d5:d2:3f:04:3f:5c:43:cf:09:1f:f7:d0:ba:c1:ac:15:06:89:
+         25:3d
+-----BEGIN CERTIFICATE-----
+MIICtjCCAh+gAwIBAgIUTxzdP4Rm0ZKpFkwJYhDlmfQrLgQwDQYJKoZIhvcNAQEL
+BQAwbTELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMQwwCgYDVQQHDANTTE8xEDAO
+BgNVBAoMB0FuZHlTZWMxEDAOBgNVBAMMB0FuZHlTZWMxHzAdBgkqhkiG9w0BCQEW
+EGluZm9AYW5keXNlYy5jb20wHhcNMTkwMjExMDEwMzIwWhcNMTkwMzEzMDEwMzIw
+WjBtMQswCQYDVQQGEwJVUzELMAkGA1UECAwCQ0ExDDAKBgNVBAcMA1NMTzEQMA4G
+A1UECgwHQW5keVNlYzEQMA4GA1UEAwwHQW5keVNlYzEfMB0GCSqGSIb3DQEJARYQ
+aW5mb0BhbmR5c2VjLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAnMBz
+MUvnDVdQ9hz9lztxSqHr0rIPQyIpqXZ9srQf1m4CpytwYbFsS37mIFOIQw1TOAMX
+B/Jv2TsLT1KewOgvULcfJNRB8QDske1uh14mXzRMlVBvViW+84jpsoHNVVilqFJW
+8yVNHnZIC+PCRCTxkZ6RTASZQOwVdCXSyuf5HTsCAwEAAaNTMFEwHQYDVR0OBBYE
+FAXnzLhj8nJu9nwCLupL3B1UrAjEMB8GA1UdIwQYMBaAFAXnzLhj8nJu9nwCLupL
+3B1UrAjEMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADgYEAcQrG9ZZa
+v2QjI4iUQy75gj+I4fFRTSJ9VRvZEHcn/TD+hKEwQecFSI5f2Efgu4RShCcLkULD
+2wnK7tFNvwskFfwqyjgyuKKJL3Inr5h1HEZOFtxm6sP8bZEaxtpehjzdZUerQZ4V
+hZFwVEmi1dI/BD9cQ88JH/fQusGsFQaJJT0=
+-----END CERTIFICATE-----
+aw@kali-aw:~/CSC321/Lab3$ 
+

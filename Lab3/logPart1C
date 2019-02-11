@@ -1,0 +1,177 @@
+aw@kali-aw:~/CSC321/Lab3$ openssl genrsa -des3 -out google.key 2048
+Generating RSA private key, 2048 bit long modulus (2 primes)
+...................................+++++
+.................+++++
+e is 65537 (0x010001)
+Enter pass phrase for google.key: googleaWil
+Verifying - Enter pass phrase for google.key:
+aw@kali-aw:~/CSC321/Lab3$ openssl rsa -in google.key -text -noout
+Enter pass phrase for google.key:
+RSA Private-Key: (2048 bit, 2 primes)
+modulus:
+    00:c3:97:39:52:be:20:2e:f5:9f:63:dd:c6:e9:8e:
+    f1:5a:22:68:fc:4e:00:4f:59:a2:b7:fc:17:35:ef:
+    14:49:b8:68:a3:a3:b4:6b:d7:4a:8c:83:b1:28:a8:
+    b1:1c:a3:62:d4:ef:ba:2c:85:69:b1:1b:ec:29:eb:
+    47:ae:69:06:7d:98:93:d6:93:55:ec:be:ba:56:b7:
+    a7:0c:65:c6:37:be:9d:f9:28:cc:74:4d:c3:19:69:
+    ec:98:0b:c5:18:af:30:79:f0:7f:b8:62:a9:e1:ad:
+    96:c9:0e:e4:d7:58:96:4b:fa:71:4b:69:38:42:e3:
+    99:f8:f8:44:b9:ab:8c:78:69:95:4f:e4:7c:e6:66:
+    88:05:0e:57:31:26:29:98:de:54:5e:56:2f:06:38:
+    9d:2a:2d:5a:4c:06:15:3f:f0:9f:b7:9e:ad:2d:28:
+    47:cd:e5:07:73:11:f5:9a:6e:f7:24:d2:a5:96:66:
+    c9:75:8f:5a:fb:c1:da:87:58:b1:80:ce:56:00:19:
+    7b:0b:20:76:b6:26:ce:52:7c:40:1d:7b:e4:ac:f9:
+    b8:22:b9:7c:5f:85:09:1c:0b:f8:f3:fb:8f:72:8c:
+    ac:76:1b:fb:01:0d:b3:28:f7:be:78:b5:1e:a7:7d:
+    c8:17:85:f4:ff:71:a4:a7:39:55:8c:93:7b:6e:49:
+    6e:45
+publicExponent: 65537 (0x10001)
+privateExponent:
+    32:2f:ab:55:bf:d3:22:39:84:1c:6b:db:8e:32:4f:
+    5b:81:58:ce:e4:74:cf:e7:80:09:15:76:1f:30:a9:
+    54:01:2d:58:4f:b9:0b:b2:c2:3e:2b:cc:59:52:6f:
+    9f:99:8c:d2:76:70:9e:db:dc:b2:c5:27:63:da:2b:
+    1a:65:78:74:e1:a1:8d:7d:60:9e:ce:91:a1:8e:9e:
+    1e:60:3e:ec:2e:cc:fa:11:ad:e4:69:cf:95:c5:c8:
+    1f:7b:65:a7:5f:cc:60:7d:85:48:1a:88:dc:8f:5e:
+    11:58:f0:ff:10:8c:00:12:d2:df:36:b0:68:f9:5d:
+    98:b4:9b:6d:c8:c6:d2:5e:51:fa:6e:e2:85:5c:e4:
+    62:ae:7f:54:74:a0:7e:2b:8a:43:3c:e4:18:11:b7:
+    9a:09:83:16:82:5d:ac:39:d6:7d:fb:9d:93:62:5b:
+    4f:8d:bb:f3:65:94:e2:8a:18:56:bc:70:08:3d:90:
+    45:2f:03:b8:68:86:2b:d9:3f:e7:55:78:68:82:86:
+    de:95:b4:4b:5a:f8:e5:d9:14:cd:dc:30:c6:c0:49:
+    9f:06:ad:53:34:c9:02:91:48:aa:74:7a:03:e6:61:
+    d2:5a:30:38:3e:31:d3:1e:f4:1d:7a:66:5a:b2:bc:
+    90:c5:7d:a3:b3:e0:0f:88:30:2d:91:1e:83:a3:7e:
+    41
+prime1:
+    00:f1:1b:60:4a:6b:5c:89:b6:ce:30:b6:96:cb:ef:
+    ea:f7:7f:d9:59:b2:d6:5c:24:e0:26:a1:0d:34:12:
+    e0:95:ab:19:99:31:70:4e:e5:8d:c1:59:4d:76:4f:
+    2e:15:eb:6f:95:55:09:4a:4a:b7:ca:50:46:38:34:
+    2b:79:e4:ee:c5:0a:7d:51:c9:42:42:bb:59:f4:c4:
+    89:f6:b6:dd:88:3e:f2:97:76:02:bc:3a:be:39:d6:
+    f8:03:8f:9e:24:ba:1e:50:8e:c3:15:0e:02:73:aa:
+    d7:2e:ae:c6:28:a4:1e:7a:65:b3:8e:01:dd:57:70:
+    30:ab:bb:11:e6:a6:be:59:07
+prime2:
+    00:cf:ac:19:8e:7c:ff:20:a8:16:39:6e:ce:dd:40:
+    84:29:bc:85:7d:8f:f2:36:9c:8b:d8:53:71:df:bc:
+    6a:5d:7a:18:ff:4b:5e:99:65:66:ee:65:40:d6:db:
+    b5:df:fe:5e:55:1d:d6:e9:91:a4:85:98:8a:83:91:
+    4c:37:5b:3e:52:64:07:19:e5:1d:f9:fd:fa:55:85:
+    e0:d4:9f:1d:0a:c9:5a:6c:ec:c5:2d:5c:09:5d:29:
+    e2:57:60:06:25:e7:6f:7d:62:6a:27:30:ef:d0:66:
+    bb:5d:e8:e3:f1:10:63:17:14:70:82:21:9b:10:83:
+    25:e5:a6:9d:e5:54:c9:a7:53
+exponent1:
+    6b:79:15:81:f6:bb:68:13:99:73:73:60:62:85:8e:
+    4a:46:ad:fe:e2:cd:d4:83:07:7b:90:9c:8f:12:bf:
+    13:58:12:70:0b:ee:90:ec:98:34:90:77:0b:fe:9d:
+    7f:5d:d3:fe:4f:ca:75:58:3a:f6:ae:b3:ae:47:ea:
+    fd:49:c3:f9:07:04:f7:98:eb:b5:4d:47:fa:e8:44:
+    cb:39:96:24:2e:52:fa:9a:ba:fb:66:7f:f6:ce:50:
+    fd:5d:5e:53:e6:b6:ae:98:04:73:75:2c:38:9c:f5:
+    90:34:8d:d5:fd:da:2c:1a:fb:5f:98:8b:2e:77:ae:
+    ea:4d:d7:db:e5:85:c1:af
+exponent2:
+    00:96:11:29:0e:9c:28:c8:72:6e:4c:e6:53:b9:f2:
+    2b:0e:f5:da:08:d8:02:11:90:a2:45:9a:57:09:74:
+    5f:f0:58:90:c3:ba:b5:0b:68:09:2f:70:1f:a0:a3:
+    78:13:fa:fe:33:c7:b2:4b:6a:21:57:20:d9:c7:25:
+    31:cc:36:b5:1c:58:88:01:20:5d:bf:0e:d6:dd:02:
+    37:6b:ad:e7:10:aa:5c:1b:a6:24:fe:18:29:f4:16:
+    96:26:c9:8e:e7:c9:0b:f9:b1:2a:40:53:ce:97:ec:
+    04:ad:61:e3:85:89:6f:f1:77:a5:ad:83:97:48:21:
+    5d:3b:4c:61:81:1c:f9:f3:5d
+coefficient:
+    00:cd:db:1c:40:55:21:b5:ac:a5:b6:6c:fc:06:4e:
+    16:4e:94:33:cb:0f:a1:fd:70:de:9c:d7:cd:c2:20:
+    ba:ee:34:46:c3:4e:aa:d0:c9:31:d8:11:d0:7b:3b:
+    09:8d:e7:1a:29:6d:dc:98:4f:35:9a:f7:53:d6:bf:
+    d6:b1:73:85:d6:fd:72:15:6d:43:53:48:4a:15:da:
+    38:7e:2b:6a:19:41:13:0c:82:1c:30:f7:4b:61:b7:
+    62:b1:b1:8c:3b:64:ef:0e:f7:e2:72:8b:11:3f:bb:
+    6b:91:32:26:c5:2f:fc:2d:8f:b1:1a:98:b3:13:b9:
+    d4:94:2b:28:c9:9b:82:ad:04
+aw@kali-aw:~/CSC321/Lab3$ openssl req -new -key google.key -out google.csr -config openssl.cnf
+Enter pass phrase for google.key:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:CA
+Locality Name (eg, city) []:SValley
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:google
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:google.com
+Email Address []:info@googlemail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:googlePW
+An optional company name []:google
+aw@kali-aw:~/CSC321/Lab3$ openssl req -new -key google.key -out google.csr -config openssl.cnf
+Enter pass phrase for google.key:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:CA
+Locality Name (eg, city) []:SValley
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:google
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:google.com
+Email Address []:info@googlemail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:googlePW
+An optional company name []:google
+aw@kali-aw:~/CSC321/Lab3$ openssl ca -in google.csr -out google.crt -cert ca.crt -keyfile ca.key -config openssl.cnf
+Using configuration from openssl.cnf
+Enter pass phrase for ca.key:
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 25 (0x19)
+        Validity
+            Not Before: Feb 11 01:09:28 2019 GMT
+            Not After : Feb 11 01:09:28 2020 GMT
+        Subject:
+            countryName               = US
+            stateOrProvinceName       = CA
+            localityName              = SValley
+            organizationName          = google
+            commonName                = google.com
+            emailAddress              = info@googlemail.com
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                82:2B:25:1A:75:63:48:98:87:F9:37:67:B1:9B:23:B8:3E:97:6C:AF
+            X509v3 Authority Key Identifier: 
+                keyid:05:E7:CC:B8:63:F2:72:6E:F6:7C:02:2E:EA:4B:DC:1D:54:AC:08:C4
+
+Certificate is to be certified until Feb 11 01:09:28 2020 GMT (365 days)
+Sign the certificate? [y/n]:y
+
+
+1 out of 1 certificate requests certified, commit? [y/n]y
+Write out database with 1 new entries
+Data Base Updated
+aw@kali-aw:~/CSC321/Lab3$ 
+
