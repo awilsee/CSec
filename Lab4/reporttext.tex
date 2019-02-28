@@ -1,0 +1,44 @@
+%You can find the code and everything else also on GitHub under the link \textit{https://github.com/awilsee/CSec}. Maybe more convenient for you.
+
+
+\section{Level 1}
+Added the following line in the query bar.
+\begin{lstlisting}
+<script>alert(1)</script>
+\end{lstlisting}
+
+
+\section{Level 2}
+Because the message box uses html, you can use the html syntax to load a picture in the message. However if the img does not exist you can define an onerror-action, which is in this case the alert. In following listing the code.
+\begin{lstlisting}
+<img src="http://doesnotexist" onerror="javascript:alert(1)"/>
+\end{lstlisting}
+
+
+\section{Level 3}
+For the execution of the function chooseTab(num) scripting is used. Additionally you can change the img url by typing something after \textit{frame\#2} which will be executed by the script. So similiar to level 2, you can add the onerror-action into the url.
+\begin{lstlisting}
+https://xss-game.appspot.com/level3/frame#2'onerror='alert(1)';
+\end{lstlisting}
+
+
+\section{Level 4}
+If you type in something different than a number the developer console gives the output \textit{Syntax Error: Invalid or unexpected token}. So there is no error handling and you can use the semicolon to concatenate and finally execute several commands. However you have to use the ascii code of the semicolon wich is \%3B.
+So add the following code at the end of the line.
+
+\begin{lstlisting}
+')%3Balert(1)%3Bvar xx=('
+\end{lstlisting}
+
+
+\section{Level 5}
+If you navigate to the sign-up page you see \textit{signup?next=confirm}. So that was after next is written will be executed after clickung on the next button. So simply by changing \textit{confirm} to the \textit{javascript:alert(1)}. and after reloading the page, you can execute your code snipped by clicking on next.
+
+
+\section{Level 6}
+So in this level you can load gadgets and other JS things. The url for that has to be typed in after the \textit{frame\#\/}. For the evil alert js file you can use google callback as described in the fourth hint.
+But if you type in \textit{https://www.google.com/jsapi?callback=alert} an exception occur which says that you're not allowed to load a url with \textit{http}. Though if you use capital letters you can use it.
+So by adding following code snippet you create the alert.
+\begin{lstlisting}
+HTTPS://www.google.com/jsapi?callback=alert
+\end{lstlisting}
