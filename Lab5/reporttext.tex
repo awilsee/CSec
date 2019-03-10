@@ -2,16 +2,61 @@
 
 
 \section{Security Questions}
+My target is Elon Musk.
+\begin{enumerate}
 
+\item 1978 BMW 320i 
+
+\item Waterkloof House Preparatory School in South Africa
+
+\item Kimbal Musk is living in Boulder, Colorado, U.S. 
+
+\item The time is unknown whereas on June 28th 1971
+
+\item He has a dog named Marvin
+
+\item Errol Musk was born in 1946
+
+\item -
+
+\item -
+
+\end{enumerate}
 
 
 \section{Ransomware Attack}
+Basically for the first two attacks you can use the encryption function of each program itself to decrypt the files again, because it seems that there is probably the XOR algoritm used. So just execute the following line.
+\begin{lstlisting}
+attack1 attack1_enc.jpg attack1_dec.jpg
+attack2 attack2_enc.jpg attack2_dec.jpg
+\end{lstlisting}
+
+\subsection{Attack 1}
+\begin{enumerate}
+\item How is the input we provided in \%edi (the key) being used?\\
+It's '\%d' so as an integer value. The key value is used for decrypting. 
+\item On each iteration, what is being written to the decrypted file (via fputc)?\\
+On each iteration the next character of the second function parameter pointer will be read and stored in a local variable. Afterwards the byte will be XORed with the first function parameter and the output written to the third function parameter pointer. This loop keeps going until EOF.
+\item What encryption scheme do you conclude is being used here?\\
+It's XOR.
+\end{enumerate}
+
+All in all, if you firstly look at the decryption function you find out that the number you entered is used with the XOR algorithm to decrypt the file. If you then look at the encrypt function you will also find the XOR command. And there is also the used key hard coded as 0x61 which is respectively 97. So if you execute the program and you enter 97 the software will decrypt the picture.\\
+
+\subsection{Attack 2}
+By disassembly the code with \textit{objdump -d attack2} you can see that in the main function the key for decryption is now read with the command \textit{fgets} and  limited in length by \textit{BUF\_SIZE}. If you have a look at the function for decryption and encryption two algorithm functions are used, which are called \textit{ksa} and \textit{prga}.\\
+The difference between the functions is that in the decryption one there are 3 input parameters. The first parameter which is the typed in key is fed into the ksa-function as first parameter. In the encryption function the first parameter fed into \textit{ksa} is local variable called \textit{str}. The others parameters are the same. So we know that the key is a string and the address of the variable is shown in the disassembled code, so we can read out the memory with gdb with the following command line and get the key used for encryption, which will be also used for decryption.
+
+\begin{lstlisting}
+(gdb) print (char*)*0x6020a0
+  	  $1 = 0x400e28 "j6XfCMEh"
+\end{lstlisting}
 
 
-\section{Attack 1}
+\subsection{Attack 3}
 
+In this program the decryption function is completely removed.\\ By analyzing the main and the encryption function you notice that the function has only two parameters which are the file pointers of the source and destination file. So none special key is used.\\
 
-\section{Attack 2}
+A more detailed look at the encryption functions shows, that they use a sequence of several XORs and ORs combined with different left- and right-shifts (\textit{shl-shr}) to encrypt their data.\\
 
-
-\section{Attack 3}
+However, it would take multiple hours to reconstruct the encryption function and implement the corresponding decryption function.
